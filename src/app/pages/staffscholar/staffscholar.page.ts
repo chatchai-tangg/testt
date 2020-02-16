@@ -39,11 +39,12 @@ export class StaffscholarPage implements OnInit {
   get_reqscholar() {
     let labels: any = [];
     let data: any;
-    this.http.get('http://203.158.144.140/APIchart/charts/Empscholar')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Empscholar')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.dataposition = res.Table.map(res => res.ภายในประเทศ);
-        this.datanameposition = res.Table.map(res => res.ต่างประเทศ);
+        this.list = res;
+        // this.dataposition = res.map(res => res.scholartype);
+        // this.datanameposition = res.map(res => res.total);
+        console.log(res);
         this.get_reqscholar();
       });
   }
@@ -56,7 +57,7 @@ export class StaffscholarPage implements OnInit {
     var ctxscholar = (<any>document.getElementById('Chartscholar')).getContext('2d');
     this.chart = new Chart(ctxscholar, {
       // The type of chart we want to create
-      type: 'bar',
+      type: 'horizontalBar',
       // The data for our dataset
       data: {
         labels: ['ศึกษาต่อภายในประเทศ (ภาคปกติ)', 'ศึกษาต่อภายในประเทศ (ภาคนอกเวลา)'],

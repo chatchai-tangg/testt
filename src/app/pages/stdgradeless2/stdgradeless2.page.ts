@@ -30,7 +30,7 @@ export class Stdgradeless2Page implements OnInit {
   // }
 
   get_stdgradeless2() {
-    this.http.get('http://203.158.144.140/APIchart/charts/Stdgradeless2')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Stdgradeless2')
       .subscribe((res: any) => {
         this.list = res.Table;
         this.total = res.Table.map(res => res.TOTAL);

@@ -28,36 +28,33 @@ export class StafftrainpersonPage implements OnInit {
   // }
 
   get_stafftrainbydivi() {
-    this.http.get('http://203.158.144.140/APIchart/charts/Emptrainstaffbydivi')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Emptrainstaffbydivi')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.depth = res.Table.map(res => res.facultyname);
-        this.total = res.Table.map(res => res.total);
-        console.log(this.list);
+        this.list = res;
+        this.depth = res.map(res => res.facultyname);
+        this.total = res.map(res => res.total);        
         this.chartstfftrain();
 
       });
   }
 
   get_stafftrainbyfac() {
-    this.http.get('http://203.158.144.140/APIchart/charts/Emptrainstaffbyfac')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Emptrainstaffbyfac')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.depth = res.Table.map(res => res.facultyname);
-        this.total = res.Table.map(res => res.total);
-        console.log(this.list);
+        this.list = res;
+        this.depth = res.map(res => res.facultyname);
+        this.total = res.map(res => res.total);       
         this.chartstfftrainbyfac();
 
       });
   }
 
   get_stafftrainbycenter() {
-    this.http.get('http://203.158.144.140/APIchart/charts/Emptrainstaffbycenter')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Emptrainstaffbycenter')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.depth = res.Table.map(res => res.facultyname);
-        this.total = res.Table.map(res => res.total);
-        console.log(this.list);
+        this.list = res;
+        this.depth = res.map(res => res.facultyname);
+        this.total = res.map(res => res.total);        
         this.chartstfftrainbycenter();
 
       });
@@ -65,12 +62,12 @@ export class StafftrainpersonPage implements OnInit {
 
 
   get_stafftrainbyinst() {
-    this.http.get('http://203.158.144.140/APIchart/charts/Emptrainstaffbyinst')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Emptrainstaffbyinst')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.depth = res.Table.map(res => res.facultyname);
-        this.total = res.Table.map(res => res.total);
-        console.log(this.list);
+        this.list = res;
+        this.depth = res.map(res => res.facultyname);
+        this.total = res.map(res => res.total);
+        
         this.chartstfftrainbyinst();
 
       });
@@ -87,7 +84,7 @@ export class StafftrainpersonPage implements OnInit {
   chartstfftrain() {
     var ctx = (<any>document.getElementById('stafftrain')).getContext('2d');
     this.chartstaff = new Chart(ctx, {
-      type: 'bar',
+      type: 'horizontalBar',
       data: {
         labels: this.depth,
         datasets: [{
@@ -131,7 +128,7 @@ export class StafftrainpersonPage implements OnInit {
   chartstfftrainbyfac() {
     var ctx = (<any>document.getElementById('stafftrainfac')).getContext('2d');
     this.chartstaff = new Chart(ctx, {
-      type: 'bar',
+      type: 'horizontalBar',
       data: {
         labels: this.depth,
         datasets: [{
@@ -175,7 +172,7 @@ export class StafftrainpersonPage implements OnInit {
   chartstfftrainbycenter() {
     var ctx = (<any>document.getElementById('stafftraincenter')).getContext('2d');
     this.chartstaff = new Chart(ctx, {
-      type: 'bar',
+      type: 'horizontalBar',
       data: {
         labels: this.depth,
         datasets: [{
@@ -219,7 +216,7 @@ export class StafftrainpersonPage implements OnInit {
   chartstfftrainbyinst() {
     var ctx = (<any>document.getElementById('stafftraininst')).getContext('2d');
     this.chartstaff = new Chart(ctx, {
-      type: 'bar',
+      type: 'horizontalBar',
       data: {
         labels: this.depth,
         datasets: [{

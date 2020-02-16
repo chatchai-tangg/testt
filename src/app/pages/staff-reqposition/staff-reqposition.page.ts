@@ -31,12 +31,11 @@ export class StaffReqpositionPage implements OnInit {
   // }
 
   get_reqposition() {
-    this.http.get('http://203.158.144.140/APIchart/charts/Empreqposition')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Empreqposition')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.etname = res.Table.map(res => res.stafftype);
-        this.countreq = res.Table.map(res => res.total);
-        console.log(this.etname);
+        this.list = res;
+        this.etname = res.map(res => res.stafftype);
+        this.countreq = res.map(res => res.total);        
         this.Chartreqposition();
       });
   }

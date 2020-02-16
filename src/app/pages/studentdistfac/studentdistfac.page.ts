@@ -17,6 +17,10 @@ export class StudentdistfacPage implements OnInit {
   cstd: any;
   facstd: any;
   yearstd: any;
+  stddept01:any;
+  countdept01:any;
+  yeardept01 : any;
+
 
   constructor(public http: HttpClient, public router: Router) { }
 
@@ -37,13 +41,13 @@ export class StudentdistfacPage implements OnInit {
   get_stdfiedfac() {
     let labels: any = [];
     let data: any;
-    this.http.get('http://203.158.144.140/APIchart/charts/Std_distfac')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/studentdistfac')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.facstd = res.Table.map(res => res.facultyname)
-        this.yearstd = res.Table.map(res => res.admitacadyear)
-        this.cstd = res.Table.map(res => res.total)
-        // console.log(this.list);
+        this.list = res;
+        this.stddept01 = res.dept01.map(res => res.facultyname);
+        this.countdept01 = res.dept01.map(res => res.total);
+        this.yeardept01 = res.dept01.map(res =>res.admitacadyear);
+        console.log(this.countdept01)      
         this.chartstdfiedfac();
       });
   }
@@ -57,10 +61,10 @@ export class StudentdistfacPage implements OnInit {
     this.chartstd = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: this.yearstd,
+        labels:  this.yeardept01,
         datasets: [{
-          label: this.facstd,
-          data:  this.cstd,
+          label: "คณะครุศาสตร์อุตสาหกรรม",
+          data:  this.countdept01,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',

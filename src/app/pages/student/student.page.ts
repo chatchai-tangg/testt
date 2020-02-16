@@ -38,11 +38,11 @@ export class StudentPage implements OnInit {
   get_stdyears() {
     let labels: any = [];
     let data: any;
-    this.http.get('http://203.158.144.140/APIchart/charts/Stdall')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Stdall')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.dyears = res.Table.map(res => res.acadyear)
-        this.dtotal = res.Table.map(res => res.total)
+        this.list = res;
+        this.dyears = res.map(res => res.acadyear)
+        this.dtotal = res.map(res => res.total)
         this.testt();
       });
   }
@@ -55,7 +55,7 @@ export class StudentPage implements OnInit {
     var canvas: any = document.getElementById("barstdyear");
     var ctx = canvas.getContext("2d");
     var myNewChart = new Chart(ctx, {
-      type: 'horizontalBar',
+      type: 'line',
       data: {
         labels: this.dyears,
         datasets: [{

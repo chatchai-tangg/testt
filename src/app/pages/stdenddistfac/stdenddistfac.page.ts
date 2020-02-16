@@ -29,11 +29,11 @@ export class StdenddistfacPage implements OnInit {
   // }
 
   get_stdfiedfac() {   
-    this.http.get('http://203.158.144.140/APIchart/charts/Std_enddistfac')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Std_enddistfac')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.total = res.Table.map(res => res.total);
-        this.facname = res.Table.map(res => res.facultyname);  
+        this.list = res;
+        this.total = res.map(res => res.total);
+        this.facname = res.map(res => res.facultyname);  
         console.log(this.list);
         this.chartstdenddistfac();
         

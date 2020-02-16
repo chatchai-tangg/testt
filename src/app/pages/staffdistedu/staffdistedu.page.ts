@@ -28,11 +28,11 @@ export class StaffdisteduPage implements OnInit {
   // }
 
   get_classifiededu() {
-    this.http.get('http://203.158.144.140/APIchart/charts/Empdistedu')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/Empdistedu')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.dlname = res.Table.map(res => res.education_level);
-        this.degree = res.Table.map(res => res.total);
+        this.list = res;
+        this.dlname = res.map(res => res.education_level);
+        this.degree = res.map(res => res.total);
         this.Chartdistedu();
       });
   }

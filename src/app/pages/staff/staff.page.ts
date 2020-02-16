@@ -20,24 +20,13 @@ export class StaffPage implements OnInit {
 
 
   constructor(public http: HttpClient) { }
-
-  // get_data() {
-  //   this.http.get('http://203.158.144.140/APIchart/charts/Employee')
-  //     .subscribe((res: any) => {
-  //       this.list = res.Table;
-  //       this.data1 = res.Table.map(res => res.Total);
-  //       this.dataname = res.Table.map(res => res.et_name);
-
-  //       this.barChartMethod();
-  //     });
-  // }
+  
   get_data() {
-    this.http.get('http://203.158.144.140/APIchart/charts/Empall')
+    this.http.get('https://app.rmutp.ac.th/testapibi/charts/empall')
       .subscribe((res: any) => {
-        this.list = res.Table;
-        this.total = res.Table.map(res => res.total);
-        this.dataname = res.Table.map(res => res.stafftype);
-
+        this.list = res;
+        this.total = res.map(res => res.total);
+        this.dataname = res.map(res => res.stafftype);
         this.barChartMethod();
       });
   }
